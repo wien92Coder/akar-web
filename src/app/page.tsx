@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -86,10 +86,27 @@ function WhatsAppIcon() {
    NAVBAR COMPONENT
    ============================================ */
 function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+    // Prevent scrolling when menu is open
+    if (!isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  };
+
+  const closeMenu = () => {
+    setIsOpen(false);
+    document.body.style.overflow = 'unset';
+  };
+
   return (
     <nav className="navbar" id="navbar">
       <div className="navbar-container">
-        <a href="#" className="navbar-logo" id="logo">
+        <a href="#" className="navbar-logo" id="logo" onClick={closeMenu}>
           <Image
             src="/assets/Logo Akar Jogja.svg"
             alt="AKAR Jogja Logo"
@@ -99,25 +116,60 @@ function Navbar() {
             priority
           />
         </a>
+
+        {/* Desktop Menu */}
         <div className="navbar-right" id="nav-right">
           <a href="#tentang">TENTANG</a>
           <a href="#program">PROGRAM</a>
           <a href="#fasilitas">FASILITAS</a>
-          <a href="#kontak">KONTAK</a>
-          <button className="btn-primary" id="nav-cta">
+          <a href="https://wa.me/6281299509961" target="_blank" rel="noopener noreferrer">KONTAK</a>
+          <a 
+            href="https://wa.me/6281299509961" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="btn-primary" 
+            id="nav-cta"
+          >
             Daftar Sekarang
             <ArrowRight />
-          </button>
+          </a>
         </div>
-        <div className="navbar-mobile-toggle" id="mobile-toggle">
+
+        {/* Mobile Toggle */}
+        <div
+          className={`navbar-mobile-toggle ${isOpen ? 'active' : ''}`}
+          id="mobile-toggle"
+          onClick={toggleMenu}
+        >
           <span></span>
           <span></span>
           <span></span>
         </div>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      <div className={`navbar-mobile-menu ${isOpen ? 'open' : ''}`}>
+        <div className="mobile-menu-links">
+          <a href="#tentang" onClick={closeMenu}>TENTANG</a>
+          <a href="#program" onClick={closeMenu}>PROGRAM</a>
+          <a href="#fasilitas" onClick={closeMenu}>FASILITAS</a>
+          <a href="https://wa.me/6281299509961" onClick={closeMenu} target="_blank" rel="noopener noreferrer">KONTAK</a>
+          <a 
+            href="https://wa.me/6281299509961" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="btn-primary" 
+            onClick={closeMenu}
+          >
+            Daftar Sekarang
+            <ArrowRight />
+          </a>
+        </div>
+      </div>
     </nav>
   );
 }
+
 
 /* ============================================
    HERO SECTION
@@ -143,10 +195,16 @@ function HeroSection() {
             mempersiapkan tenaga hospitality siap kerja melalui praktik langsung di hotel.
           </p>
           <div className="hero-actions">
-            <button className="btn-primary btn-primary-lg" id="hero-cta">
-              Daftar Sekarang
-              <ArrowRight />
-            </button>
+          <a 
+            href="https://wa.me/6281299509961" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="btn-primary btn-primary-lg" 
+            id="hero-cta"
+          >
+            Daftar Sekarang
+            <ArrowRight />
+          </a>
           </div>
           <div className="hero-social-proof">
             <div className="hero-avatars">
@@ -169,8 +227,8 @@ function HeroSection() {
             alt="AKAR Hospitality Training Team"
             width={673}
             height={690}
-            style={{ width: '672.74px', height: '689.85px' }}
             priority
+            className="hero-main-img"
           />
         </div>
       </div>
@@ -432,9 +490,15 @@ function ProgramsSection() {
                     <span className="meta-text">Kuota: {prog.students}</span>
                   </div>
                 </div>
-                <button className="btn-program-new" id={`program-cta-${i}`}>
+                <a 
+                  href="https://wa.me/6281299509961" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="btn-program-new" 
+                  id={`program-cta-${i}`}
+                >
                   Daftar & Ikut Test Sekarang
-                </button>
+                </a>
               </div>
             </div>
           ))}
@@ -551,10 +615,16 @@ function CTASection() {
           Program ini dibuat untuk siapa saja, termasuk kamu yang sama sekali belum berkarier
           profesional.
         </p>
-        <button className="btn-cta" id="cta-whatsapp">
+        <a 
+          href="https://wa.me/6281299509961" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="btn-cta" 
+          id="cta-whatsapp"
+        >
           <WhatsAppIcon />
           Daftar Sekarang via WhatsApp
-        </button>
+        </a>
       </div>
     </section>
   );
@@ -576,12 +646,21 @@ function Footer() {
           />
         </a>
         <p className="footer-copy">
-          © 2025 &nbsp;&nbsp; AKAR Jogja. All rights reserved.
+          © 2026 &nbsp;&nbsp; AKAR Jogja. All rights reserved.
+        </p>
+        <p className="footer-copy">
+          Loman Park Hotel Yogyakarta
         </p>
         <div className="footer-links">
-          <a href="#" aria-label="Instagram" id="social-instagram">📷</a>
-          <a href="#" aria-label="WhatsApp" id="social-whatsapp">💬</a>
-          <a href="#" aria-label="Email" id="social-email">✉️</a>
+          <a href="#" aria-label="Instagram" id="social-instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+          <a href="https://wa.me/6281299509961" aria-label="WhatsApp" id="social-whatsapp" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-11.7 8.38 8.38 0 0 1 3.8.9L21 3.5z"></path></svg>
+          </a>
+          <a href="#" aria-label="Email" id="social-email">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          </a>
         </div>
       </div>
     </footer>
