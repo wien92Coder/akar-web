@@ -123,11 +123,11 @@ function Navbar() {
           <a href="#program">PROGRAM</a>
           <a href="#fasilitas">FASILITAS</a>
           <a href="https://wa.me/6281299509961" target="_blank" rel="noopener noreferrer">KONTAK</a>
-          <a 
-            href="https://wa.me/6281299509961" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="btn-primary" 
+          <a
+            href="https://wa.me/6281299509961"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary"
             id="nav-cta"
           >
             Daftar Sekarang
@@ -154,11 +154,11 @@ function Navbar() {
           <a href="#program" onClick={closeMenu}>PROGRAM</a>
           <a href="#fasilitas" onClick={closeMenu}>FASILITAS</a>
           <a href="https://wa.me/6281299509961" onClick={closeMenu} target="_blank" rel="noopener noreferrer">KONTAK</a>
-          <a 
-            href="https://wa.me/6281299509961" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="btn-primary" 
+          <a
+            href="https://wa.me/6281299509961"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary"
             onClick={closeMenu}
           >
             Daftar Sekarang
@@ -195,16 +195,16 @@ function HeroSection() {
             mempersiapkan tenaga hospitality siap kerja melalui praktik langsung di hotel.
           </p>
           <div className="hero-actions">
-          <a 
-            href="https://wa.me/6281299509961" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="btn-primary btn-primary-lg" 
-            id="hero-cta"
-          >
-            Daftar Sekarang
-            <ArrowRight />
-          </a>
+            <a
+              href="https://wa.me/6281299509961"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary btn-primary-lg"
+              id="hero-cta"
+            >
+              Daftar Sekarang
+              <ArrowRight />
+            </a>
           </div>
           <div className="hero-social-proof">
             <div className="hero-avatars">
@@ -343,7 +343,7 @@ function ValuesSection() {
     {
       letter: "A",
       icon: "/assets/icon-Attitude.png",
-      title: "Attitude First",
+      title: "Akhlak",
       desc: "Sikap adalah fondasi karier. Profesionalisme dan integritas lebih utama dari sekadar skill.",
     },
     {
@@ -361,8 +361,8 @@ function ValuesSection() {
     {
       letter: "R",
       icon: "/assets/icon-Responsible.png",
-      title: "Responsible",
-      desc: "Bertanggung jawab terhadap pekerjaan, tim, dan kepercayaan mitra industri.",
+      title: "Relevan",
+      desc: "Menghadirkan program pelatihan yang selaras dengan kebutuhan industri, perkembangan zaman, dan tuntutan dunia kerja sehingga ketrampilan yang dipelajari dapat langsung diterapkan secara nyata.",
     },
   ];
 
@@ -490,11 +490,11 @@ function ProgramsSection() {
                     <span className="meta-text">Kuota: {prog.students}</span>
                   </div>
                 </div>
-                <a 
-                  href="https://wa.me/6281299509961" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="btn-program-new" 
+                <a
+                  href="https://wa.me/6281299509961"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-program-new"
                   id={`program-cta-${i}`}
                 >
                   Daftar & Ikut Test Sekarang
@@ -615,16 +615,21 @@ function CTASection() {
           Program ini dibuat untuk siapa saja, termasuk kamu yang sama sekali belum berkarier
           profesional.
         </p>
-        <a 
-          href="https://wa.me/6281299509961" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          className="btn-cta" 
+        <a
+          href="https://wa.me/6281299509961"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-cta"
           id="cta-whatsapp"
         >
           <WhatsAppIcon />
           Daftar Sekarang via WhatsApp
         </a>
+        <div className="cta-address">
+          Loman Park Hotel<br />
+          Jl. Affandi - Gejayan, Complex Colombo<br />
+          Yogyakarta 55281
+        </div>
       </div>
     </section>
   );

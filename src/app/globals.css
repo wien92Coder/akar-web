@@ -693,7 +693,7 @@ button {
   text-align: left;
   transition: var(--transition);
   width: 290px;
-  height: 289px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -1172,6 +1172,13 @@ button {
   background: var(--color-gold-light);
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(232, 165, 48, 0.4);
+}
+
+.cta-address {
+  margin-top: 32px;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
 }
 
 /* ============================================
